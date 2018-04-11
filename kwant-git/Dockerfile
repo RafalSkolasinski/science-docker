@@ -10,7 +10,7 @@ ENV KWANT_HASH 82baedca
 COPY build-deps.yml build.conf /environments/
 
 # Make folder for kwant sources, git clone source code, add build.conf
-RUN mkdir -p /src/kwant && \
+RUN mkdir -p /src && \
     git clone https://gitlab.kwant-project.org/kwant/kwant.git /src/kwant && \
     mv /environments/build.conf /src/kwant/build.conf
 
