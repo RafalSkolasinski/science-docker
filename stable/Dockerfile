@@ -1,20 +1,37 @@
 FROM jupyter/minimal-notebook:latest
 
-LABEL maintainer="Rafal Skolasinski <r.j.Skolasinski@gmail.com>"
+LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
 USER root
 
-# Add environment file
-RUN mkdir /environments
-COPY environment.yml /environments/
+ENV KWANT_HASH a674bf94
 
-# Create environment
-RUN conda install --yes -c defaults conda=4.5 nb_conda=2.2.1 && \
+# Add environment file
+RUN mkdir /environments /src
+COPY environment.yml build.conf /environments/
+
+# Create the main research environment
+RUN conda install --yes -c defaults conda=4.5 && \
     conda env create --file /environments/environment.yml && \
-    conda clean --yes --all
+    . activate && conda activate science && \
+    python -m ipykernel install --user --name science --display-name "Science Environment"
+
+# Install git version of kwant
+RUN conda create --name kwant --clone science && \
+    . activate && conda activate kwant && \
+    python -m ipykernel install --user --name kwant --display-name "Kwant-dev Environment" && \
+    conda remove --yes kwant tinyarray && \
+    git clone https://gitlab.kwant-project.org/kwant/kwant.git /src/kwant && \
+    mv /environments/build.conf /src/kwant && \
+    cd /src/kwant && git checkout $KWANT_HASH && \
+    sed -i -e "s:PREFIX:$CONDA_PREFIX:g" build.conf && \
+    pip install git+https://gitlab.kwant-project.org/kwant/tinyarray.git && \
+    pip install .
 
 # Disable nbpresent
-RUN jupyter nbextension disable --py --sys-prefix nbpresent
+# RUN jupyter nbextension disable --py --sys-prefix nbpresent
+
+RUN conda clean --yes --all
 
 # Fix permissions (required when following the base image)
 RUN fix-permissions $HOME && \
