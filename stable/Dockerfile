@@ -19,7 +19,7 @@ RUN conda install --yes -c defaults conda=4.5 && \
 # Install git version of kwant
 RUN conda create --name kwant --clone science && \
     . activate && conda activate kwant && \
-    python -m ipykernel install --user --name kwant --display-name "Kwant-dev Environment" && \
+    python -m ipykernel install --user --name kwant --display-name "Dev-Kwant Environment" && \
     conda remove --yes kwant tinyarray && \
     git clone https://gitlab.kwant-project.org/kwant/kwant.git /src/kwant && \
     mv /environments/build.conf /src/kwant && \

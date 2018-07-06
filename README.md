@@ -20,7 +20,11 @@ Running
     docker logs science
 
 will show information with "token" required to access jupyter notebook.
-The last remainig step is to open web browser and go to the given link that looks similar to
+The last remainig step is to open web browser and go to the
+
+    http://localhost:8888
+
+and provide obtained hopping.
 
 
 ## Image versioning
@@ -34,6 +38,12 @@ It can be pulled as
 
 To obtain the latest build use ``rafalskolasinski/science:latest``.
 
-As [Kwant](https://kwant-project.org/) is a main package that I use in my research I also provide [kwant-git](kwant-git/Dockerfile) builds made by using sources directly from [git](https://gitlab.kwant-project.org/kwant/kwant).
+As [Kwant](https://kwant-project.org/) is a main package that I use in my research I also provide a second environment with kwant built directly from [git](https://gitlab.kwant-project.org/kwant/kwant).
 
-This images are tagged by using tag of the stable environment that served as a base and HASH of commit that was used to build Kwant, e.g. ``rafalskolasinski/science:2018.1_82baedca``.
+
+## Provided environments
+Main (stable) conda [environment](stable/environment.yml) that I provide is named ``science`` and has a
+display name ``Science Environment``.
+
+Second environment has identical set of packages with the exception being Kwant that is installed from sources in version specified by ``KWANT_HASH`` variable inside the [Dockerfile](stable/Dockerfile).
+The environment is named ``kwant`` and has display name ``Dev-Kwant Environment``.
