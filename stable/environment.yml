@@ -23,4 +23,8 @@ dependencies:
   - conda-forge::mumps=5.0.2
   - conda-forge::lapack=3.6.1
   - conda-forge::cython=0.28.3
+
+  # various packages that handle codes installed from sources
   - conda-forge::pytest=3.6.2
+  - conda-forge::pytest-cov=2.5.1
+  - conda-forge::pytest-flakes=2.0.0

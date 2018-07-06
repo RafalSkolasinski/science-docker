@@ -47,3 +47,26 @@ display name ``Science Environment``.
 
 Second environment has identical set of packages with the exception being Kwant that is installed from sources in version specified by ``KWANT_HASH`` variable inside the [Dockerfile](stable/Dockerfile).
 The environment is named ``kwant`` and has display name ``Dev-Kwant Environment``.
+
+
+## Building and installing python codes
+Code development process can be simplified by working in reproducible environments, like docker container.
+For this purpose I added a volume ``/src`` and convenient scripts (build and test) in ``/usr/local`` directory that can be executed through ``docker run command``.
+These scripts allow to easy build and install (in development mode) python source code into the ``science`` environment.
+
+In example, to build and install kwant from a local copy one can start the container with
+
+    docker run --rm -d -p 8888:8888 -v /path/to/kwant:/src --name kwant rafalskolasinski/science:latest
+
+and execute build and test of a code with
+
+    docker exec dev set.build.conf
+    docker exec dev build
+    docker exec dev test -v --cov=kwant --cov-report term --flakes kwant
+
+Note: everything after ``test`` are arguments passed to ``py.test``
+Note: first command ``set.build.conf`` is specific to kwant and assures that MUPS will be configured properly.
+
+If you want to start a clean build run following command in your ``kwant`` folder:
+
+    git clean -fxd .

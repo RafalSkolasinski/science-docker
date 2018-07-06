@@ -3,4 +3,6 @@
 set -e
 
 cd /src
-start.sh py.test $@
+source activate science
+
+py.test $@
