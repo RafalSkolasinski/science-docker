@@ -24,7 +24,7 @@ The last remainig step is to open web browser and go to the
 
     http://localhost:8888
 
-and provide obtained hopping.
+and provide obtained token.
 
 
 ## Image versioning
