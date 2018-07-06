@@ -1,7 +1,0 @@
-name: build-deps
-dependencies:
-  - defaults::gcc=4.8.5
-  - conda-forge::mumps=5.0.2
-  - conda-forge::lapack=3.6.1
-  - conda-forge::cython=0.28.1
-  - conda-forge::pytest=3.5.0

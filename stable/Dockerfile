@@ -28,9 +28,7 @@ RUN conda create --name kwant --clone science && \
     pip install git+https://gitlab.kwant-project.org/kwant/tinyarray.git && \
     pip install .
 
-# Disable nbpresent
-# RUN jupyter nbextension disable --py --sys-prefix nbpresent
-
+# Cleanup all downloaded conda files
 RUN conda clean --yes --all
 
 # Fix permissions (required when following the base image)
