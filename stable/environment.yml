@@ -19,7 +19,7 @@ dependencies:
   - defaults::ipyparallel=6.2.2
   - conda-forge::hpc05=v1.24
 
-  # kwant build depenendencies (required for dev environment)
+  # kwant build depenendencies (required for kwant environment)
   - conda-forge::mumps=5.0.2
   - conda-forge::lapack=3.6.1
   - conda-forge::cython=0.28.3

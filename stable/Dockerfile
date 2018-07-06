@@ -7,29 +7,29 @@ USER root
 ENV KWANT_HASH a674bf94
 
 # Add environment file
-RUN mkdir /environments /src
+RUN mkdir /environments /tmp
 COPY environment.yml build.conf /environments/
 
 # Create the main research environment
 RUN conda install --yes -c defaults conda=4.5 && \
     conda env create --file /environments/environment.yml && \
     . activate && conda activate science && \
-    python -m ipykernel install --user --name science --display-name "Science Environment"
+    python -m ipykernel install --name science --display-name "Science Environment"
 
 # Install git version of kwant
 RUN conda create --name kwant --clone science && \
     . activate && conda activate kwant && \
-    python -m ipykernel install --user --name kwant --display-name "Dev-Kwant Environment" && \
+    python -m ipykernel install --name kwant --display-name "Dev-Kwant Environment" && \
     conda remove --yes kwant tinyarray && \
-    git clone https://gitlab.kwant-project.org/kwant/kwant.git /src/kwant && \
-    mv /environments/build.conf /src/kwant && \
-    cd /src/kwant && git checkout $KWANT_HASH && \
+    git clone https://gitlab.kwant-project.org/kwant/kwant.git /tmp/kwant && \
+    mv /environments/build.conf /tmp/kwant && \
+    cd /tmp/kwant && git checkout $KWANT_HASH && \
     sed -i -e "s:PREFIX:$CONDA_PREFIX:g" build.conf && \
     pip install git+https://gitlab.kwant-project.org/kwant/tinyarray.git && \
     pip install .
 
-# Cleanup all downloaded conda files
-RUN conda clean --yes --all
+# Cleanup conda installation
+RUN conda clean -tipsy
 
 # Fix permissions (required when following the base image)
 RUN fix-permissions $HOME && \
