@@ -60,9 +60,9 @@ In example, to build and install kwant from a local copy one can start the conta
 
 and execute build and test of a code with
 
-    docker exec dev set.build.conf
-    docker exec dev build
-    docker exec dev test -v --cov=kwant --cov-report term --flakes kwant
+    docker exec kwant set.build.conf
+    docker exec kwant build
+    docker exec kwant test -v --cov=kwant --cov-report term --flakes kwant
 
 Note: everything after ``test`` are arguments passed to ``py.test``
 Note: first command ``set.build.conf`` is specific to kwant and assures that MUPS will be configured properly.
