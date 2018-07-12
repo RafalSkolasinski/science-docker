@@ -11,15 +11,12 @@ RUN mkdir /environments
 COPY environment.yml build.conf /environments/
 
 # Create the main research environment
-RUN conda install --yes -c defaults conda=4.5 && \
-    conda env create --file /environments/environment.yml && \
-    . activate && conda activate science && \
-    python -m ipykernel install --name science --display-name "Science Environment"
+RUN conda env update -n base -f /environments/environment.yml
 
 # Install git version of kwant
-RUN conda create --name kwant --clone science && \
+RUN conda create --name kwant --clone base && \
     . activate && conda activate kwant && \
-    python -m ipykernel install --name kwant --display-name "Dev-Kwant Environment" && \
+    python -m ipykernel install --name kwant --display-name "Python3 (dev-kwant)" && \
     conda remove --yes kwant tinyarray && \
     git clone https://gitlab.kwant-project.org/kwant/kwant.git /tmp/kwant && \
     cp /environments/build.conf /tmp/kwant && \
