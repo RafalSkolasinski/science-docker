@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook:latest
+FROM jupyter/minimal-notebook:3772fffc4aa4
 
 LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
