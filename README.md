@@ -5,7 +5,7 @@
 Images are based on [jupyter/minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/minimal-notebook) and I refer to its documentation for more specific usage cases.
 
 
-## Basic usage of stable image
+## Basic usage of science image
 
     docker pull rafalskolasinski/science:latest
     docker run --rm -d -p 8888:8888 -v $PWD:/home/jovyan/work --name science rafalskolasinski/science:latest
@@ -28,7 +28,7 @@ and provide obtained token.
 
 
 ## Image versioning
-The main image is located in [stable](stable/) directory.
+The main image is located in [science](science/) directory.
 First version of its conda environment is tagged as ``2018.1``.
 
 It can be pulled as
@@ -42,11 +42,10 @@ As [Kwant](https://kwant-project.org/) is a main package that I use in my resear
 
 
 ## Provided environments
-Main (stable) conda [environment](stable/environment.yml) that I provide is named ``science`` and has a
-display name ``Science Environment``.
+The base conda is updated by packages listed in [environment](science/environment.yml) file.
 
-Second environment has identical set of packages with the exception being Kwant that is installed from sources in version specified by ``KWANT_HASH`` variable inside the [Dockerfile](stable/Dockerfile).
-The environment is named ``kwant`` and has display name ``Dev-Kwant Environment``.
+This environment is then cloned and stable version of Kwant is replaced with a version installed from sources in version specified by ``KWANT_HASH`` variable inside the [Dockerfile](science/Dockerfile).
+The environment is named ``kwant`` and has display name ``Python3 (dev-kwant)``.
 
 
 ## Building and installing python codes
