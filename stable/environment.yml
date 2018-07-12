@@ -1,7 +1,6 @@
 name: science
 dependencies:
   # main scientific packages
-  - defaults::python=3.6.6
   - defaults::mkl=2018.0.3
   - defaults::scipy=1.1.0
   - defaults::numpy=1.14.5
@@ -10,9 +9,9 @@ dependencies:
   - conda-forge::sympy=1.1.1
 
   # data analysis and serialisation
-  - conda-forge::holoviews=1.10.6
+  - conda-forge::holoviews=1.10.7
   - conda-forge::xarray=0.10.7
-  - conda-forge::pandas=0.23.1
+  - conda-forge::pandas=0.23.3
   - conda-forge::deepdish=0.3.4
 
   # parallel computation
@@ -28,3 +27,7 @@ dependencies:
   - conda-forge::pytest=3.6.2
   - conda-forge::pytest-cov=2.5.1
   - conda-forge::pytest-flakes=2.0.0
+
+  # semicon
+  - pip:
+    - git+https://gitlab.kwant-project.org/semicon/semicon.git@v.0.1.0
