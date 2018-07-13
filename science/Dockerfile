@@ -14,7 +14,7 @@ COPY environment.yml build.conf /environments/
 RUN conda env update -n base -f /environments/environment.yml
 
 # Install git version of kwant
-RUN conda create --name kwant --clone base && \
+RUN conda create -n kwant -f /environments/environment.yml && \
     . activate && conda activate kwant && \
     python -m ipykernel install --name kwant --display-name "Python3 (dev-kwant)" && \
     conda remove --yes kwant tinyarray && \
