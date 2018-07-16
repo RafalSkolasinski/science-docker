@@ -1,21 +1,23 @@
 name: science
 dependencies:
   # main scientific packages
-  - defaults::mkl=2018.0.3
-  - defaults::scipy=1.1.0
-  - defaults::numpy=1.14.5
+  - conda-forge::scipy=1.1.0
+  - conda-forge::numpy=1.14.5
 
   - conda-forge::kwant=1.3.2
   - conda-forge::sympy=1.1.1
+  - conda-forge::adaptive=0.4.1
 
-  # data analysis and serialisation
+  # data analysis, visulation and serialisation
+  - conda-forge::matplotlib=2.2.2
+  - conda-forge::plotly=3.0.2
   - conda-forge::holoviews=1.10.7
   - conda-forge::xarray=0.10.7
   - conda-forge::pandas=0.23.3
   - conda-forge::deepdish=0.3.4
 
   # parallel computation
-  - defaults::ipyparallel=6.2.2
+  - conda-forge::ipyparallel=6.2.2
   - conda-forge::hpc05=v1.24
 
   # kwant build depenendencies (required for kwant environment)
@@ -28,6 +30,14 @@ dependencies:
   - conda-forge::pytest-cov=2.5.1
   - conda-forge::pytest-flakes=2.0.0
   - conda-forge::line_profiler=2.1.2
+
+  # scikit packages
+  - conda-forge::scikit-learn=0.19.2
+  - conda-forge::scikit-image=0.14.0
+
+  # machine-learning packages
+  - conda-forge::keras=2.2.0
+  - conda-forge::tensorflow=1.8.0
 
   # semicon
   - pip:
