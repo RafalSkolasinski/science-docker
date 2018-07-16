@@ -27,6 +27,7 @@ dependencies:
   - conda-forge::pytest=3.6.2
   - conda-forge::pytest-cov=2.5.1
   - conda-forge::pytest-flakes=2.0.0
+  - conda-forge::line_profiler=2.1.2
 
   # semicon
   - pip:
