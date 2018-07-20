@@ -1,5 +1,8 @@
 name: science
 dependencies:
+  # misc tools
+  - conda-forge::nbdime=1.0.1
+
   # main scientific packages
   - conda-forge::scipy=1.1.0
   - conda-forge::numpy=1.14.5

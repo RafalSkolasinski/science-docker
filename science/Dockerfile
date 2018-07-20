@@ -13,7 +13,8 @@ RUN conda env update -n base -f /environments/environment.yml && \
     conda clean -tipsy
 
 # Enable jupyter extension
-RUN jupyter labextension install @pyviz/jupyterlab_pyviz
+RUN jupyter labextension install @pyviz/jupyterlab_pyviz && \
+    jupyter labextension install nbdime-jupyterlab
 
 # Fix permissions (required when following the base image)
 RUN fix-permissions $HOME && \
