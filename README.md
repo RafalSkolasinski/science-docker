@@ -2,7 +2,7 @@
 
 ## Base for images
 
-Images are based on [jupyter/minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/minimal-notebook) and I refer to its documentation for more specific usage cases.
+Images are based on [jupyter/minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/minimal-notebook) and I refer to its documentation for more specific use cases.
 
 
 ## Basic usage of science image
@@ -10,8 +10,8 @@ Images are based on [jupyter/minimal-notebook](https://github.com/jupyter/docker
     docker pull rafalskolasinski/science:latest
     docker run --rm -d -p 8888:8888 -v $PWD:/home/jovyan/work --name science rafalskolasinski/science:latest
 
-This will mount current working directory ($PWD) under "~/work" directory inside the container.
-Please either "cd" into the directory with the simulation codes and data prior to executing above command or provide path to it instead of "($PWD)".
+This will mount the current working directory ``$PWD`` under ``~/work`` directory inside the container.
+Please either ``cd`` into the desired working directory prior to executing above command or replace ``$PWD`` with desired path.
 
 The container will expose a jupyter notebook to the local port 8888.
 
@@ -38,20 +38,14 @@ It can be pulled as
 
 To obtain the latest build use ``rafalskolasinski/science:latest``.
 
-As [Kwant](https://kwant-project.org/) is a main package that I use in my research I also provide a second environment with kwant built directly from [git](https://gitlab.kwant-project.org/kwant/kwant).
-
-
-## Provided environments
-The base conda is updated by packages listed in [environment](science/environment.yml) file.
-
-This environment is then cloned and stable version of Kwant is replaced with a version installed from sources in version specified by ``KWANT_HASH`` variable inside the [Dockerfile](science/Dockerfile).
-The environment is named ``kwant`` and has display name ``Python3 (dev-kwant)``.
+As [Kwant](https://kwant-project.org/) is a main package that I use in my research I also provide a second [image](kwant/) with kwant built directly from [git](https://gitlab.kwant-project.org/kwant/kwant).
+Environment in this image has all packages the same with only stable Kwant being replaced with a version specified by ``KWANT_HASH`` in the [Dockerfile](kwant/Dockerfile).
 
 
 ## Building and installing python codes
 Code development process can be simplified by working in reproducible environments, like docker container.
 For this purpose I added a volume ``/src`` and convenient scripts (build and test) in ``/usr/local`` directory that can be executed through ``docker run command``.
-These scripts allow to easy build and install (in development mode) python source code into the ``science`` environment.
+These scripts allow to easy build and install (in development mode) python source code into the ``base`` environment.
 
 In example, to build and install kwant from a local copy one can start the container with
 
