@@ -1,4 +1,4 @@
-FROM rafalskolasinski/science:latest
+FROM rafalskolasinski/science:2018.2
 
 LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
