@@ -58,7 +58,12 @@ and execute build and test of a code with
     docker exec kwant test -v --cov=kwant --cov-report term --flakes kwant
 
 Note: everything after ``test`` are arguments passed to ``py.test``
+
 Note: first command ``set.build.conf`` is specific to kwant and assures that MUPS will be configured properly.
+
+If you want to install Kwant from ``stable`` branch you must first add conda's gcc to the environment with
+
+    docker exec kwant conda install gcc
 
 If you want to start a clean build run following command in your ``kwant`` folder:
 
