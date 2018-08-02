@@ -1,10 +1,10 @@
-FROM rafalskolasinski/science:2018.2
+FROM rafalskolasinski/science:latest
 
 LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
 USER root
 
-ENV KWANT_HASH a674bf94
+ENV KWANT_HASH 60f02546
 
 # Install git version of kwant
 RUN  . activate && \
