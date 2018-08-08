@@ -16,8 +16,15 @@ RUN conda env update -n base -f /environments/environment.yml && \
     conda clean -tipsy
 
 # Enable jupyter extension
-RUN jupyter labextension install @pyviz/jupyterlab_pyviz && \
-    jupyter labextension install nbdime-jupyterlab
+ARG NODE_OPTIONS=--max-old-space-size=4096
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter nbextension enable --py plotlywidget --sys-prefix && \
+    jupyter labextension install nbdime-jupyterlab && \
+    jupyter labextension install @pyviz/jupyterlab_pyviz && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.36 --no-build && \
+    jupyter labextension install plotlywidget@0.2.1  --no-build && \
+    jupyter labextension install @jupyterlab/plotly-extension@0.16  --no-build && \
+    jupyter lab build
 
 # Fix permissions (required when following the base image)
 RUN fix-permissions $HOME && \
