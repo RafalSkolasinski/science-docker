@@ -4,6 +4,9 @@ LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
 USER root
 
+# add ssh-client to provide ssh-agent and ssh-add commands
+RUN apt-get update && apt-get install --yes openssh-client
+
 # Add environment file
 RUN mkdir /environments
 COPY environment.yml build.conf /environments/
