@@ -1,5 +1,7 @@
 name: science
 dependencies:
+  - conda-forge::python=3.6.5
+
   # misc tools
   - conda-forge::nbdime=1.0.1
 
