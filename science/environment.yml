@@ -15,7 +15,7 @@ dependencies:
 
   # data analysis, visulation and serialisation
   - conda-forge::matplotlib=2.2.2
-  - conda-forge::plotly=3.1.0
+  - conda-forge::plotly=3.1.1
   - conda-forge::holoviews=1.10.7
   - conda-forge::xarray=0.10.8
   - conda-forge::pandas=0.23.3
