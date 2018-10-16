@@ -31,6 +31,10 @@ dependencies:
   - conda-forge::cython=0.28.5
   - conda-forge::gcc=4.8.5
 
+  # libgfortran : make sure all dependencies are installed
+  - conda-forge::libgfortran=3.0.0
+  - conda-forge::libgfortran-ng=7.2.0
+
   # various packages that handle codes installed from sources
   - conda-forge::pytest=3.8.2
   - conda-forge::pytest-cov=2.6.0
