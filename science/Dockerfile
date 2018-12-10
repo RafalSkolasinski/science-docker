@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook:1145fb1198b2
+FROM jupyter/minimal-notebook:14fdfbf9cfc1
 
 LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
@@ -21,9 +21,10 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter nbextension enable --py plotlywidget --sys-prefix && \
     jupyter labextension install nbdime-jupyterlab && \
     jupyter labextension install @pyviz/jupyterlab_pyviz && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.37 --no-build && \
-    jupyter labextension install plotlywidget@0.4.0  --no-build && \
-    jupyter labextension install @jupyterlab/plotly-extension@0.17.2  --no-build && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.38 --no-build && \
+    jupyter labextension install plotlywidget@0.5.2  --no-build && \
+    jupyter labextension install jupyterlab-chart-editor@1.0 --no-build && \
+    jupyter labextension install @jupyterlab/plotly-extension@0.18.1  --no-build && \
     jupyter lab build
 
 # Fix permissions (required when following the base image)
