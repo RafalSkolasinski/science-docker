@@ -1,11 +1,11 @@
-FROM rafalskolasinski/science:2018.4
+FROM rafalskolasinski/science:latest
 
 LABEL maintainer="Rafal Skolasinski <r.j.skolasinski@gmail.com>"
 
 USER root
 
 # Install dev version of scipy
-RUN pip install git+https://github.com/scipy/scipy.git
+RUN pip install scipy==1.2.0rc2
 
 
 # Fix permissions (required when following the base image)
