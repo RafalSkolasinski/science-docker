@@ -13,6 +13,7 @@ COPY environment.yml build.conf /environments/
 
 # Create the main research environment
 RUN conda env update -n base -f /environments/environment.yml && \
+    pip install xyzpy==0.2.5 tqdm==4.28.1 && \
     conda clean -tipsy
 
 # Enable jupyter extension
