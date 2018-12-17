@@ -51,4 +51,4 @@ dependencies:
 
   # semicon
   - pip:
-    - git+https://gitlab.kwant-project.org/semicon/semicon.git@v0.1.0
+    - git+https://gitlab.kwant-project.org/semicon/semicon.git@v0.2.0
