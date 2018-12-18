@@ -1,0 +1,47 @@
+name: science
+dependencies:
+  - conda-forge::python=3.6.6
+
+  # misc tools
+  - conda-forge::nbdime=1.0.2
+
+  # main scientific packages
+  - conda-forge::scipy=1.1.0
+  - conda-forge::numpy=1.15.4
+
+  - conda-forge::kwant=1.4.0a1
+  - conda-forge::sympy=1.1.1
+  - conda-forge::adaptive=0.7.0
+
+  # data analysis, visulation and serialisation
+  - conda-forge::matplotlib=3.0.2
+  - conda-forge::plotly=3.4.2
+  - conda-forge::holoviews=1.10.9
+  - conda-forge::xarray=0.11.0
+  - conda-forge::pandas=0.23.4
+  - conda-forge::deepdish=0.3.4
+
+  # parallel computation
+  - conda-forge::ipyparallel=6.2.3
+  - conda-forge::hpc05=v1.30
+
+  # kwant build depenendencies (required for kwant environment)
+  - conda-forge::mumps=5.1.2
+  - conda-forge::lapack=3.6.1
+  - conda-forge::cython=0.29.1
+  - conda-forge::gcc=4.8.5
+
+  # libgfortran : make sure all dependencies are installed
+  - conda-forge::libgfortran=3.0.0
+  - conda-forge::libgfortran-ng=7.2.0
+
+  # various packages that handle codes installed from sources
+  - conda-forge::pytest=4.0.1
+  - conda-forge::pytest-cov=2.6.0
+  - conda-forge::pytest-flakes=4.0.0
+  - conda-forge::line_profiler=2.1.2
+
+  # semicon
+  - pip:
+    - semicon==v0.2.0
+    - scipy==1.2.0
