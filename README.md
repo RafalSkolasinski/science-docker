@@ -43,6 +43,9 @@ Environment in this image has all packages the same with only stable Kwant being
 
 
 ## Building and installing python codes
+
+**NOTE:** this functionality is being dropped - latest image that comes with it is tagged as `2018.5`.
+
 Code development process can be simplified by working in reproducible environments, like docker container.
 For this purpose I added a volume ``/src`` and convenient scripts (build and test) in ``/usr/local`` directory that can be executed through ``docker run command``.
 These scripts allow to easy build and install (in development mode) python source code into the ``base`` environment.
