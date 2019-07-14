@@ -7,14 +7,18 @@ USER root
 # add ssh-client to provide ssh-agent and ssh-add commands
 RUN apt-get update && apt-get install --yes openssh-client
 
+# Switch back to jovyan to avoid accidental container runs as root
+USER $NB_UID
+
 # Add environment file
-RUN mkdir /environments
-COPY environment.yml /environments/
+COPY environment.yml /tmp/
 
 # Create the main research environment
-RUN conda env update -n base -f /environments/environment.yml && \
+RUN conda env update -n base -f /tmp/environment.yml && \
     pip install xyzpy==0.3.1 tqdm==4.32.2 && \
-    conda clean -tipsy
+    conda clean -tipsy && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 # Enable jupyter extension
 ARG NODE_OPTIONS=--max-old-space-size=4096
@@ -26,11 +30,6 @@ RUN jupyter labextension install nbdime-jupyterlab && \
     jupyter labextension install jupyterlab-chart-editor@1.1 --no-build && \
     jupyter lab build && \
     jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    jupyter nbextension enable --py plotlywidget --sys-prefix
-
-# Fix permissions (required when following the base image)
-RUN fix-permissions $HOME && \
-    fix-permissions $CONDA_DIR
-
-# Switch back to jovyan to avoid accidental container runs as root
-USER $NB_UID
+    jupyter nbextension enable --py plotlywidget --sys-prefix && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
