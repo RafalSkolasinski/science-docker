@@ -12,8 +12,7 @@ RUN mkdir /environments
 COPY environment.yml /environments/
 
 # Create the main research environment
-RUN conda install --yes conda-forge::conda=4.7.5 && \
-    conda env update -n base -f /environments/environment.yml && \
+RUN conda env update -n base -f /environments/environment.yml && \
     pip install xyzpy==0.3.1 tqdm==4.32.2 && \
     conda clean -tipsy
 
