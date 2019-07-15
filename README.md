@@ -1,3 +1,9 @@
+**Note**: this repository is not maintained anymore.
+In recent commits I updated the environment in `science` image to latest packages.
+However, I dropped scripts that were making possible to use this image to develop Python codes.
+Please refer to tag `2018.5` if this is the functionality you are looking for.
+
+
 # Collection of Dockerfiles that I use in my research
 
 ## Base for images
